@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <title>Document</title>
+</head>
+<body onload="loadEasy('easy');">
+<body>
+    
+
+    <section id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="ruby">
+                    <h1 class="rotate" ><i class="fa-solid fa-bolt"></i></h1>
+                    <h1>Snap 2025 </h1>
+                    <h1><i class="fa-solid fa-bolt"></i></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="controls" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    
+                </div>
+                <div class="col-4 jcc">
+                    <div id="test1" style="padding-right: 30px;">???</div>
+
+                    <select id="selectDifficulty" defaultSelected="hard">
+                        <option value='easy'>8 x 6</option>
+                        <option value="medium">8 x 8</option>
+                        <option value="hard">8 x 10</option>
+                    </select>
+
+                    <div id="test2" style="padding-left: 30px;" >???</div>
+                </div>
+                <div class="col-4">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="game-table">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="A1" class="square">A</div>
+                        <div id="A2" class="square"></div>
+                        <div id="A3" class="square"></div>
+                        <div id="A4" class="square"></div>
+                        <div id="A5" class="square"></div>
+                        <div id="A6" class="square"></div>
+                        <div id="A7" class="square"></div>
+                        <div id="A8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="B1" class="square">B</div>
+                        <div id="B2" class="square"></div>
+                        <div id="B3" class="square"></div>
+                        <div id="B4" class="square"></div>
+                        <div id="B5" class="square"></div>
+                        <div id="B6" class="square"></div>
+                        <div id="B7" class="square"></div>
+                        <div id="B8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="C1" class="square">C</div>
+                        <div id="C2" class="square"></div>
+                        <div id="C3" class="square"></div>
+                        <div id="C4" class="square"></div>
+                        <div id="C5" class="square"></div>
+                        <div id="C6" class="square"></div>
+                        <div id="C7" class="square"></div>
+                        <div id="C8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="D1" class="square">D</div>
+                        <div id="D2" class="square"></div>
+                        <div id="D3" class="square"></div>
+                        <div id="D4" class="square"></div>
+                        <div id="D5" class="square"></div>
+                        <div id="D6" class="square"></div>
+                        <div id="D7" class="square"></div>
+                        <div id="D8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="E1" class="square">E</div>
+                        <div id="E2" class="square"></div>
+                        <div id="E3" class="square"></div>
+                        <div id="E4" class="square"></div>
+                        <div id="E5" class="square"></div>
+                        <div id="E6" class="square"></div>
+                        <div id="E7" class="square"></div>
+                        <div id="E8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="F1" class="square">F</div>
+                        <div id="F2" class="square"></div>
+                        <div id="F3" class="square"></div>
+                        <div id="F4" class="square"></div>
+                        <div id="F5" class="square"></div>
+                        <div id="F6" class="square"></div>
+                        <div id="F7" class="square"></div>
+                        <div id="F8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="rowG" style="display: none;">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="G1" class="square">G</div>
+                        <div id="G2" class="square"></div>
+                        <div id="G3" class="square"></div>
+                        <div id="G4" class="square"></div>
+                        <div id="G5" class="square"></div>
+                        <div id="G6" class="square"></div>
+                        <div id="G7" class="square"></div>
+                        <div id="G8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="rowH"  style="display: none;">
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="H1" class="square">H</div>
+                        <div id="H2" class="square"></div>
+                        <div id="H3" class="square"></div>
+                        <div id="H4" class="square"></div>
+                        <div id="H5" class="square"></div>
+                        <div id="H6" class="square"></div>
+                        <div id="H7" class="square"></div>
+                        <div id="H8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="rowJ"  style="display: none;" >
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="J1" class="square">J</div>
+                        <div id="J2" class="square"></div>
+                        <div id="J3" class="square"></div>
+                        <div id="J4" class="square"></div>
+                        <div id="J5" class="square"></div>
+                        <div id="J6" class="square"></div>
+                        <div id="J7" class="square"></div>
+                        <div id="J8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="rowK" style="display: none;" >
+                <div class="col-12 jcc">
+                    <div class="line">
+                        <div id="K1" class="square">J</div>
+                        <div id="K2" class="square"></div>
+                        <div id="K3" class="square"></div>
+                        <div id="K4" class="square"></div>
+                        <div id="K5" class="square"></div>
+                        <div id="K6" class="square"></div>
+                        <div id="K7" class="square"></div>
+                        <div id="K8" class="square"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <div id="test3">???</div>
+    <br>
+    <br>
+    <div id="test4">???</div>
+
+
+
+</body>
+
+
+     <!-- JavaScript sheets  -->
+    <script src="./assets/js/script.js" ></script>
+    <!-- Font Awesome toolkit From fontawesome.com -->
+    <script src="https://kit.fontawesome.com/6062614551.js" crossorigin="anonymous"></script>
+
+</html>
