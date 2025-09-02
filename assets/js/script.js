@@ -19,6 +19,7 @@ switch (level) {
         document.getElementById('rowH').style.display = 'none';
         document.getElementById('rowI').style.display = 'none';
         document.getElementById('rowJ').style.display = 'none';
+        winnersArray = [];
         setIcons(48,24);
         break;
     case 'medium':
@@ -26,6 +27,7 @@ switch (level) {
         document.getElementById('rowH').style.display = 'block';
         document.getElementById('rowI').style.display = 'none';
         document.getElementById('rowJ').style.display = 'none';
+        winnersArray = [];
         setIcons(64,32);
         break;
     case 'hard':
@@ -33,6 +35,7 @@ switch (level) {
         document.getElementById('rowH').style.display = 'block';
         document.getElementById('rowI').style.display = 'block';
         document.getElementById('rowJ').style.display = 'block';
+        winnersArray = [];
         setIcons(80,40);
         break;
 }
@@ -124,43 +127,74 @@ function setIcons(gridLength, iconLength) {
 
 
     let winnersArray = [];
-
-
     function checkPair(first, second) {
     
     clickedPair1 = first + ',' + second;
     clickedPair2 = second + ',' + first;
 
-    
     let pairsArray = window.sessionStorage.getItem('pairsArray');
+    let level = window.sessionStorage.getItem('level');
     let matchingPair;
     
-     // easy 24
-     // medium 32
-     // hard 40 
-
-
-    let length = window.sessionStorage.getItem('level');
-    document.getElementById('test5').textContent = length;
-
-    
-
-
     let s = 0, e = 5;
-    for (let x = 1; x <= 50; x++) {
+    for (let x = 1; x <= 40; x++) {
     matchingPair = pairsArray.slice(s, e);
     
     if (clickedPair1 === matchingPair || clickedPair2 === matchingPair) {
         document.getElementById(first).style.backgroundColor = 'green';
         document.getElementById(second).style.backgroundColor = 'green';
         winnersArray.push(first, second);
- 
+
+        if (level === 'easy' && winnersArray.length == 48) {
+        // 8x6  game 
+        for (let id of winnersArray) {
+        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        }
+        let black = ['A1', 'A8', 'B3', 'B6','E3', 'E4', 'E5', 'E6', 'F1', 'F8']; 
+        for (let id of black) {
+        document.getElementById(id).style.backgroundColor = 'black';
+        }
+        let diagonal = ['A1', 'A8', 'D2', 'D7','E2','E7', 'F1', 'F8'];
+        let degrees =  [135,225,45,315,225,135,45,315];
+        for (let d = 0; d < diagonal.length; d++) {
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        winnersArray = [];
+        }}
+
+        if (level === 'medium' && winnersArray.length == 64) {
+        for (let id of winnersArray) {
+        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        }
+        let black = ['A1','A8','C3','C6','G3','G4','G5','G6','H1','H8']; 
+        for (let id of black) {
+        document.getElementById(id).style.backgroundColor = 'black';
+        }
+        let diagonal = ['A1', 'A8','C2','C3','C6','C7','D2','D3','D6','D7', 'F2', 'F7', 'G2', 'G7', 'H1', 'H8'];
+        let degrees =  [135,225,315,45,315,45,225,135,225,135,45,315,225,135,45,315];
+        for (let d = 0; d < diagonal.length; d++) {
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        }}
+    
+        if (level === 'hard' && winnersArray.length == 80) {
+        for (let id of winnersArray) {
+        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        }
+        let black = ['C1','C8','D1','D8','E1','E2','E7','E8','F1','F2','F3','F6','F7','F8','G1','G2','G3','G6','G7','G8','H1','H2','H3','H6','H7','H8','I1','I2','I7','I8']; 
+        for (let id of black) {
+        document.getElementById(id).style.backgroundColor = 'black';
+        }
+        let diagonal = ['C1', 'C8', 'E2', 'E7', 'H3', 'H6','I2','I7'];
+        let degrees =  [45,315,45,315,135,225,135,225];
+        for (let d = 0; d < diagonal.length; d++) {
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        }}
     }
+
     s = s + 6;
     e = e + 6;
 
     }
-
+    console.log(winnersArray);
 }
 
 
