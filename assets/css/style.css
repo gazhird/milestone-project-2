@@ -31,86 +31,104 @@
     padding-bottom: 30px;
 }
 
+
+
 #game-table {
-    padding-top: 40px;
+    border: 2px solid red;
+    width: 100%;
+    padding-top: 38px;
 }
 
-#game-table i {
-padding: 4px 6px 4px 4px;
-font-size: 28px;
-}
+
 
 #game-table .line {
+    padding-left: 2px;
+    padding-right: 2px;
     display: flex;
     flex-direction: row;
+    
 }
 
 
 #game-table .square {
-    border: 2px solid black;
-    height: 36px;
-    width: 38px;
+border: 2px solid black;
+min-width: 12.5vw;
+min-height: 40px;
+} 
+
+
+#game-table i {
+padding: 6px;
+font-size: 20px;
 }
 
 
 
+/* 
 /* Mobil M 375  */
-@media screen and (min-width: 375px) {
+/* @media screen and (min-width: 375px) {
     
   #game-table .square {
     height: 43px;
-    width: 45px;
+    min-width: 12.5%;
+    max-width: 12.5%;
+    }
+
+    #game-table i {
+    padding: 4px 6px 4px 4px;
+    font-size: 23px;
+    }
+
+} */
+
+/* Mobile L  */
+/* @media screen and (min-width: 425px) {
+    
+    #game-table .square {
+    height: 49px;
+    min-width: 12.5%;
+    max-width: 12.5%;
     }
 
     #game-table i {
     padding: 4px 6px 4px 4px;
     font-size: 28px;
     }
-
-}
-
-/* Mobile L  */
-@media screen and (min-width: 425px) {
-    
-    #game-table .square {
-    height: 49px;
-    width: 51px;
-    }
-
-    #game-table i {
-    padding: 4px 6px 4px 4px;
-    font-size: 33px;
-    }
-}
+} */
 
 
 
 /* Large Screen or landscape phones */
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 576px) {
     #game-table .square {
     height: 55px;
-    width: 55px;
+    min-width: 12.5%;
+    max-width: 12.5%;
     }
     #game-table i {
     padding: 4px 6px 4px 4px;
-    font-size: 38px;
+    font-size: 33px;
     }
-}
+} */
+
+
 
 /* Tablets and larger */
 @media screen and (min-width: 768px) {
     #game-table .square {
-    height: 90px;
-    width: 90px;
-    }
+    border: 2px solid black;
+    min-width: 12.5vw;
+    min-height: 90px;
+    } 
+
+
     #game-table i {
-    padding: 12px 8px 8px 7px;
-    font-size: 60px;
+    font-size: 50px;
     }
-}
+    }
 
 /* Laptops and Desktops */
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
     #game-table .square {
     height: 110px;
     width: 110px;
@@ -119,10 +137,10 @@ font-size: 28px;
     padding: 12px 8px 6px 8px;
     font-size: 68px;
     }
-}
+} */
 
 /* Large Desktops, Tv screens & Projectors */
-@media screen and (min-width: 1200px) {
+/* @media screen and (min-width: 1200px) {
     #game-table .square {
     height: 110px;
     width: 110px;
@@ -131,4 +149,4 @@ font-size: 28px;
     padding: 6px 6px 6px 6px;
     font-size: 84px;
     }
-}
+}  */
