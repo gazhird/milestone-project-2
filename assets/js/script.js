@@ -7,14 +7,20 @@ setIcons(48,32);
 
 
 
-document.getElementById('selectDifficulty').addEventListener("change", difficulty);
-function difficulty() {
-let level = this.value
+
+
+
+function difficulty(level) {
+
 window.sessionStorage.setItem('level', level);
 
 
 switch (level) {
     case 'easy':
+        document.getElementById('easy').style.display = 'block';
+        document.getElementById('medium').style.display = 'none';
+        document.getElementById('hard').style.display = 'none';
+        
         document.getElementById('rowG').style.display = 'none';
         document.getElementById('rowH').style.display = 'none';
         document.getElementById('rowI').style.display = 'none';
@@ -23,6 +29,10 @@ switch (level) {
         setIcons(48,24);
         break;
     case 'medium':
+        document.getElementById('easy').style.display = 'none';
+        document.getElementById('medium').style.display = 'block';
+        document.getElementById('hard').style.display = 'none';
+
         document.getElementById('rowG').style.display = 'block';
         document.getElementById('rowH').style.display = 'block';
         document.getElementById('rowI').style.display = 'none';
@@ -31,6 +41,9 @@ switch (level) {
         setIcons(64,32);
         break;
     case 'hard':
+        document.getElementById('easy').style.display = 'none';
+        document.getElementById('medium').style.display = 'none';
+        document.getElementById('hard').style.display = 'block';
         document.getElementById('rowG').style.display = 'block';
         document.getElementById('rowH').style.display = 'block';
         document.getElementById('rowI').style.display = 'block';
@@ -96,18 +109,18 @@ function setIcons(gridLength, iconLength) {
     clicks++;
     if (clicks === 1) {
     first = square;
-    document.getElementById(first).style.backgroundColor = "yellow";
+    document.getElementById(first).style.backgroundColor = "orange";
     } else if (clicks === 2) {
     second = square;
-    document.getElementById(second).style.backgroundColor = "yellow";
+    document.getElementById(second).style.backgroundColor = "orange";
     checkPair(first, second);
     } else if (clicks === 3) {
     oldFirst = first;
     oldSecond = second;
     
         if (winnersArray.includes(oldFirst) || winnersArray.includes(oldSecond) ) {
-        document.getElementById(oldFirst).style.backgroundColor = "green";
-        document.getElementById(oldSecond).style.backgroundColor = "green";
+        document.getElementById(oldFirst).style.backgroundColor = "#2973e2";
+        document.getElementById(oldSecond).style.backgroundColor = "#2973e2";
         } else {
         document.getElementById(oldFirst).style.backgroundColor = "white";
         document.getElementById(oldSecond).style.backgroundColor = "white";
@@ -115,7 +128,7 @@ function setIcons(gridLength, iconLength) {
 
     clicks = 1;
     first = square;
-    document.getElementById(first).style.backgroundColor = "yellow";
+    document.getElementById(first).style.backgroundColor = "orange";
   
     }
 
@@ -141,8 +154,8 @@ function setIcons(gridLength, iconLength) {
     matchingPair = pairsArray.slice(s, e);
     
     if (clickedPair1 === matchingPair || clickedPair2 === matchingPair) {
-        document.getElementById(first).style.backgroundColor = 'green';
-        document.getElementById(second).style.backgroundColor = 'green';
+        document.getElementById(first).style.backgroundColor = '#2973e2';
+        document.getElementById(second).style.backgroundColor = '#2973e2';
         winnersArray.push(first, second);
 
         if (level === 'easy' && winnersArray.length == 48) {
