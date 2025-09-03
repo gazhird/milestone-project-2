@@ -158,9 +158,9 @@ function setIcons(gridLength, iconLength) {
         document.getElementById(first).style.backgroundColor = '#2973e2';
         document.getElementById(second).style.backgroundColor = '#2973e2';
         winnersArray.push(first, second);
-        gameScore(10, level);
-
+        
         if (level === 'easy' && winnersArray.length == 48) {
+        myTimer('stop');
         // 8x6  game 
         for (let id of winnersArray) {
         document.getElementById(id).style.backgroundColor = '#2973e2';
@@ -174,6 +174,7 @@ function setIcons(gridLength, iconLength) {
         for (let d = 0; d < diagonal.length; d++) {
         document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
         winnersArray = [];
+        
         }}
 
         if (level === 'medium' && winnersArray.length == 64) {
@@ -211,49 +212,105 @@ function setIcons(gridLength, iconLength) {
     e = e + 6;
     
     }
+
+    if (winnersArray.length === 2) {
+    setInterval(myTimer, 1000);
+    }
+
     
-   
 }
 
 
 
-
-
-let score = 0;
 let time = 0;
-let m = 0;
 let minutes = 0;
 let seconds = 0;
-function gameScore(points, level) {
-score += points
-
-if (score == 10) {
-let myInterval = setInterval(function () {
-time += 1;
-
-if (time < 59) {
-document.getElementById('timer').innerText = 'TIME: 0:' + time; 
-} 
-else if (time >= 60) {
-m = time / 60; 
-minutes = m.toFixed(0);
-seconds = time % 60;
-document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
-}
-}, 1000);
-
-}
-
-if (level == 'easy' && score == 240) {
-clearInterval(myInterval);
-}
+let stopper = 0;
 
 
+function myTimer(trigger) {
+    time += 1;
+    if (trigger === 'stop') {
+    stopper++
+    document.getElementById('timer').innerText = 'TIME: xxx ';
+    finishTime(time);
+    let stop = setInterval(myTimer, 1000);
+    clearInterval(stop);
+    }
+    if (stopper < 1) {
+    minutes = Math.floor(time / 60);
+    seconds = time - minutes * 60;
+    document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+    }
 }
 
 
 
+function finishTime(time) {
+    minutes = Math.floor(time / 60);
+    seconds = time - minutes * 60;
+    document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+}
 
+
+
+
+
+// if (winnersArray.length == 2){
+//     let myVar = setInterval(myTimer, 1000);
+//     } else if (winnersArray.length == 48) {
+//     clearInterval(myVar);
+//     }
+   
+
+
+// if (level == 'easy') {
+
+//         if (score > 10) {
+//         let interval = setInterval(function(){
+//         time += 1;
+
+//             if (time < 59) {
+//             document.getElementById('timer').innerText = 'TIME: 0:' + time; 
+//             } 
+//             else if (time >= 60) {
+//             minutes = Math.floor(time / 60);
+//             seconds = time - minutes * 60;
+//             document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+//             }
+        
+//         if (score >= 240){
+//         clearInterval(interval);
+//         }
+//         }, 1000);
+    
+//         }
+// }
+
+
+
+
+
+// if (score > 10) {
+//     var myInterval = setInterval(function () {
+//     time += 1;
+// if (time < 59) {
+//     document.getElementById('timer').innerText = 'TIME: 0:' + time; 
+// } 
+// else if (time >= 60) {
+//     minutes = Math.floor(time / 60);
+//     seconds = time - minutes * 60;
+//     document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+// }
+// }, 1000);
+    
+// }
+
+
+
+// if (level == 'easy' && score == 240) {
+//     clearInterval(myInterval);
+//     }
 
 
 
