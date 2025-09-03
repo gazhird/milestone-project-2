@@ -30,14 +30,14 @@
 }
 
 #header i {
-    font-size: 52px;
+    font-size: 24px;
    color: #2973e2; 
 }
 
 #header h1 {
 font-family: "Black Ops One", system-ui;
   font-weight: 400;
-  font-size: 52px;
+  font-size: 22px;
 }
 
 
@@ -64,26 +64,17 @@ font-family: "Black Ops One", system-ui;
 
 
 button {
-width: 122px;
+width: 80px;
 background-color: #2973e2;
 }
 
 button h3 {
     padding: 2px 4px 2px 4px;
+    font-size: 12px;
     font-family: "Black Ops One", system-ui;
     font-weight: 400;
     margin-bottom: 0px;
 }
-
-
-/* .red {
-    color: red;
-}
-
-.black {
-    color: black;
-} */
-
 
 
 #game-table .line {
@@ -97,7 +88,7 @@ button h3 {
 
 #game-table .square {
 border: 2px solid black;
-min-width: 12.5vw;
+min-width: 12vw;
 min-height: 40px;
 } 
 
@@ -108,7 +99,8 @@ padding-top:
 font-size: 20px;
 }
 
-.score h3 {
+#controls h3 {
+font-size: 12px;
  font-family: "Black Ops One", system-ui;
  color: black;
 }

@@ -138,7 +138,7 @@ function setIcons(gridLength, iconLength) {
    
 
 
-
+    
     let winnersArray = [];
     function checkPair(first, second) {
     
@@ -149,6 +149,7 @@ function setIcons(gridLength, iconLength) {
     let level = window.sessionStorage.getItem('level');
     let matchingPair;
     
+    
     let s = 0, e = 5;
     for (let x = 1; x <= 40; x++) {
     matchingPair = pairsArray.slice(s, e);
@@ -157,11 +158,12 @@ function setIcons(gridLength, iconLength) {
         document.getElementById(first).style.backgroundColor = '#2973e2';
         document.getElementById(second).style.backgroundColor = '#2973e2';
         winnersArray.push(first, second);
+        gameScore(10, level);
 
         if (level === 'easy' && winnersArray.length == 48) {
         // 8x6  game 
         for (let id of winnersArray) {
-        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        document.getElementById(id).style.backgroundColor = '#2973e2';
         }
         let black = ['A1', 'A8', 'B3', 'B6','E3', 'E4', 'E5', 'E6', 'F1', 'F8']; 
         for (let id of black) {
@@ -170,13 +172,13 @@ function setIcons(gridLength, iconLength) {
         let diagonal = ['A1', 'A8', 'D2', 'D7','E2','E7', 'F1', 'F8'];
         let degrees =  [135,225,45,315,225,135,45,315];
         for (let d = 0; d < diagonal.length; d++) {
-        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
         winnersArray = [];
         }}
 
         if (level === 'medium' && winnersArray.length == 64) {
         for (let id of winnersArray) {
-        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        document.getElementById(id).style.backgroundColor = '#2973e2';
         }
         let black = ['A1','A8','C3','C6','G3','G4','G5','G6','H1','H8']; 
         for (let id of black) {
@@ -185,12 +187,13 @@ function setIcons(gridLength, iconLength) {
         let diagonal = ['A1', 'A8','C2','C3','C6','C7','D2','D3','D6','D7', 'F2', 'F7', 'G2', 'G7', 'H1', 'H8'];
         let degrees =  [135,225,315,45,315,45,225,135,225,135,45,315,225,135,45,315];
         for (let d = 0; d < diagonal.length; d++) {
-        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
+        winnersArray = [];
         }}
     
         if (level === 'hard' && winnersArray.length == 80) {
         for (let id of winnersArray) {
-        document.getElementById(id).style.backgroundColor = 'goldenrod';
+        document.getElementById(id).style.backgroundColor = '#2973e2';
         }
         let black = ['C1','C8','D1','D8','E1','E2','E7','E8','F1','F2','F3','F6','F7','F8','G1','G2','G3','G6','G7','G8','H1','H2','H3','H6','H7','H8','I1','I2','I7','I8']; 
         for (let id of black) {
@@ -199,39 +202,54 @@ function setIcons(gridLength, iconLength) {
         let diagonal = ['C1', 'C8', 'E2', 'E7', 'H3', 'H6','I2','I7'];
         let degrees =  [45,315,45,315,135,225,135,225];
         for (let d = 0; d < diagonal.length; d++) {
-        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, goldenrod 50%)`;
+        document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
+        winnersArray = [];
         }}
     }
 
     s = s + 6;
     e = e + 6;
-
+    
     }
-    console.log(winnersArray);
+    
+   
 }
 
 
 
 
 
+let score = 0;
+let time = 0;
+let m = 0;
+let minutes = 0;
+let seconds = 0;
+function gameScore(points, level) {
+score += points
+
+if (score == 10) {
+let myInterval = setInterval(function () {
+time += 1;
+
+if (time < 59) {
+document.getElementById('timer').innerText = 'TIME: 0:' + time; 
+} 
+else if (time >= 60) {
+m = time / 60; 
+minutes = m.toFixed(0);
+seconds = time % 60;
+document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+}
+}, 1000);
+
+}
+
+if (level == 'easy' && score == 240) {
+clearInterval(myInterval);
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
