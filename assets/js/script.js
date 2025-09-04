@@ -26,7 +26,7 @@ if (level == 'easy') {
         document.getElementById('easy').style.display = 'block';
         document.getElementById('medium').style.display = 'none';
         document.getElementById('hard').style.display = 'none';
-        let D2H = ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D0','E1','E2','E3','E4','E5','E6','E7','E8','E9','E10','F1','F2','F3','F4','F5','F6','F7','F8','F9','F0',
+        let D2H = ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D0','E1','E2','E3','E4','E5','E6','E7','E8','E9','E0','F1','F2','F3','F4','F5','F6','F7','F8','F9','F0',
             'G1','G2','G3','G4','G5','G6','G7','G8','G9','G0','H1','H2','H3','H4','H5','H6','H7','H8','H9','H0'];
         for (let ids of D2H) {
         document.getElementById(ids).style.display = 'none';
