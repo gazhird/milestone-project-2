@@ -164,9 +164,6 @@ function setIcons(gridLength, iconLength) {
     clickedPair2 = second + ',' + first;
 
 
-    document.getElementById('test1').textContent = 'CP1 ' + clickedPair1;
-    document.getElementById('test2').textContent = 'CP2 ' + clickedPair2;
-
     let pairsArray = window.sessionStorage.getItem('pairsArray');
     // let level = window.sessionStorage.getItem('level');
     
