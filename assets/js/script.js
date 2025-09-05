@@ -153,74 +153,94 @@ function setIcons(gridLength, iconLength) {
 }
 
 
-   
+    let score = 0;
     let winnersArray = [];
     function checkPair(first, second) {
     
-    
-
-
     clickedPair1 = first + ',' + second;
     clickedPair2 = second + ',' + first;
 
-
     let pairsArray = window.sessionStorage.getItem('pairsArray');
-    // let level = window.sessionStorage.getItem('level');
+    let level = window.sessionStorage.getItem('level');
     
     let matchingPair;
     
-    
-
-
     let s = 0, e = 5;
     for (let x = 1; x <= 40; x++) {
     matchingPair = pairsArray.slice(s, e);
-    console.log('MP',x,'  ',matchingPair);
     if (clickedPair1 === matchingPair || clickedPair2 === matchingPair) {
-        document.getElementById(first).style.backgroundColor = 'green';
-        document.getElementById(second).style.backgroundColor = 'green';
+        document.getElementById(first).style.backgroundColor = '#2973e2';
+        document.getElementById(second).style.backgroundColor = '#2973e2';
         winnersArray.push(first, second);
-        
-        
+        score += 10;
     }
-
     s = s + 6;
     e = e + 6;
-    
     }
-    
-    console.log('WA ', winnersArray);
 
-    // if (winnersArray.length === 2) {
-    // setInterval(myTimer, 1000);
-    // }
+    document.getElementById('score').textContent = 'SCORE: ' + score;
+
+    if (level == 'easy' && winnersArray.length == 30) {
+    myTimer('stop', score);
+    } else if (level == 'medium' && winnersArray.length == 60) {
+    myTimer('stop', score);
+    } else if (level == 'hard' && winnersArray.length == 80)  {
+    myTimer('stop', score);
+    }
+
+    if (winnersArray.length == 2) {
+    setInterval(myTimer, 1000);
+    }
 
     
 }
 
 
 
-// let time = 0;
-// let minutes = 0;
-// let seconds = 0;
-// let stopper = 0;
+let time = 0;
+let minutes = 0;
+let seconds = 0;
+let stopper = 0;
 
-// function myTimer(trigger) {
-//     time += 1;
-//     if (trigger === 'stop') {
-//     stopper++
-//     minutes = Math.floor(time / 60);
-//     seconds = time - minutes * 60;
-//     document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
-//     let stop = setInterval(myTimer, 1000);
-//     clearInterval(stop);
-//     }
-//     if (stopper < 1) {
-//     minutes = Math.floor(time / 60);
-//     seconds = time - minutes * 60;
-//     document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
-//     }
-// }
+function myTimer(trigger, score) {
+    time += 1;
+    if (trigger === 'stop') {
+    stopper++
+    minutes = Math.floor(time / 60);
+    seconds = time - minutes * 60;
+    document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+    document.getElementById('game-over').style.display = 'block';
+    document.getElementById('game-time').innerText = 'TIME: ' + minutes + ':' + seconds;
+    document.getElementById('game-score').innerText = 'SCORE:' + score;
+    document.getElementById('game-table').style.display = 'none';
+
+    let stop = setInterval(myTimer, 1000);
+    clearInterval(stop);
+    document.getElementById("game-table").style.display = "none";
+    }
+    if (stopper < 1) {
+    minutes = Math.floor(time / 60);
+    seconds = time - minutes * 60;
+    document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

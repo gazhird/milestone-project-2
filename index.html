@@ -57,9 +57,9 @@
     </section>
 
 
-    <section id="game-table" class="jcc">
+    <section id="game-section" class="jcc">
 
-            <div class="flex-container jcc">
+            <div id="game-table" class="flex-container jcc">
                     <!-- easy  -->
                     <div id="A1" onclick="clicked('A1')" class="square">A</div>
                     <div id="A2" onclick="clicked('A2')" class="square"></div>
@@ -150,6 +150,30 @@
                     <div id="H0" onclick="clicked('H0')" class="square"></div>
          
                 </div>
+
+                <div id="game-over" style="display: none;" >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 jcc">
+                                <div class="ruby">
+                                    <h1 class="rotate" ><i class="fa-solid fa-bolt"></i></h1>
+                                    <h1>GAME OVER </h1>
+                                    <h1><i class="fa-solid fa-bolt"></i></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 jcc">
+                            <h3 id="game-score"></h3>
+                            </div>
+                            <div class="col-6 jcc">
+                            <h3 id="game-time"></h3>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </section>
@@ -164,11 +188,12 @@
     <br>
     <div id="test4">T4</div>
     <br>
-    <div id="test5">T5</div>
- -->
+    <div id="test5">T5</div> -->
+
+    
 
 
-</body>
+
 
 
      <!-- JavaScript sheets  -->
