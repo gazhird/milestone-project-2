@@ -211,7 +211,7 @@ function myTimer(trigger, score) {
     document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
     document.getElementById('game-over').style.display = 'block';
     document.getElementById('game-time').innerText = 'TIME: ' + minutes + ':' + seconds;
-    document.getElementById('game-score').innerText = 'SCORE:' + score;
+    document.getElementById('game-score').innerText = 'SCORE: ' + score;
     document.getElementById('game-table').style.display = 'none';
 
     let stop = setInterval(myTimer, 1000);

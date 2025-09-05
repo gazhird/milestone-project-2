@@ -4,14 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Snap Retro, the iconic test of speed! Perfect for casual gamers, enthusiasts, and student gatherings.">
+    <!-- Custom CSS Styleshet  -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap 5  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" >
-    <title>Document</title>
+    <!-- Favicon downloaded SVG from  Font Awesome -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/bolt-solid-full.svg">
+
+    <title>SNAP RETRO </title>
+
+
 </head>
 <body onload="loadEasy('easy');">
-<!-- <body> -->
-    
 
+    
     <section id="header">
         <div class="container-fluid">
             <div class="row">
@@ -26,23 +34,15 @@
         </div>
     </section>
 
-
-
     <section id="controls" >
         <div class="container-fluid">
             <div class="row ruby">
-                <div class="col-4">
-   
-                </div>
-                <div class="col-4 jcc">
-                        <button id="button" >
+                <div class="col-12 jcc">
+                    <button id="button" >
                         <h3 id="easy" onclick="difficulty('medium')" style="display: block;" >EASY</h3>
                         <h3 id="medium" onclick="difficulty('hard')" style="display: none;" >MEDIUM</h3>
                         <h3 id="hard" onclick="difficulty('easy')" style="display: none;" >HARD</h3>
                     </button>
-                </div>
-                <div class="col-4">
-                    
                 </div>
             </div>
             <div class="row mt-4">
@@ -58,8 +58,7 @@
 
 
     <section id="game-section" class="jcc">
-
-            <div id="game-table" class="flex-container jcc">
+            <div id="game-table"  class="flex-container jcc">
                     <!-- easy  -->
                     <div id="A1" onclick="clicked('A1')" class="square">A</div>
                     <div id="A2" onclick="clicked('A2')" class="square"></div>
@@ -148,8 +147,8 @@
                     <div id="H8" onclick="clicked('H8')" class="square"></div>
                     <div id="H9" onclick="clicked('H9')" class="square"></div>
                     <div id="H0" onclick="clicked('H0')" class="square"></div>
-         
                 </div>
+
 
                 <div id="game-over" style="display: none;" >
                     <div class="container">
@@ -170,8 +169,17 @@
                             <h3 id="game-time"></h3>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12 jcc orange">
+                                <h3 class="" >INSERT COINS</h3>
+                            </div>
+                            <div class="col-12 jcc" >
+                                <button>
+                                <a href="index.html" >PLAY</a>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-
 
                 </div>
             </div>
@@ -179,24 +187,18 @@
     </section>
 
 
-    <!-- <br>
-    <div id="test1">T1</div>
-    <br>
-    <div id="test2">T2</div>
-    <br>
-    <div id="test3">T3</div>
-    <br>
-    <div id="test4">T4</div>
-    <br>
-    <div id="test5">T5</div> -->
-
-    
+    <section id="footer" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-
-
-
-     <!-- JavaScript sheets  -->
+    <!-- JavaScript sheets  -->
     <script src="./assets/js/script.js" ></script>
     <!-- Font Awesome toolkit From fontawesome.com -->
     <script src="https://kit.fontawesome.com/6062614551.js" crossorigin="anonymous"></script>
