@@ -82,7 +82,7 @@ body {
     margin-bottom: 0px;
 }
 
-#controls h3, #game-over h3, #game-over a {
+#controls h3, #game-over h3, #game-over a, #footer h3 {
     font-size: 16px;
     font-family: "Black Ops One", system-ui;
     color: black;
@@ -152,12 +152,12 @@ body {
 /* Footer  */
 
 #footer {
-    height: 200px;
+    height: 160px;
     border-top: 6px solid #2973e2;
     background-color: #a8aeb5;
     border-bottom: 6px solid #2973e2;
+    text-align: center;
 }
-
 
 
 /* Mobile M 375  */

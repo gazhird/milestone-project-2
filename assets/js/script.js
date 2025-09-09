@@ -1,7 +1,6 @@
 
-
-
-
+// This is a onload function from the body element 
+// The for loop hides the medium and hard range of game difficulty squares. 
 function loadEasy(level) {
 let D2H = ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D0','E1','E2','E3','E4','E5','E6','E7','E8','E9','E0','F1','F2','F3','F4','F5','F6','F7','F8','F9','F0',
             'G1','G2','G3','G4','G5','G6','G7','G8','G9','G0','H1','H2','H3','H4','H5','H6','H7','H8','H9','H0'];
@@ -13,14 +12,16 @@ setIcons(30,15);
 }
 
 
+// This amends the game board table, hiding/showing rows of the game table and the difficulty button text.
+// This Also resets winnerArray abd passes data to the SetIcons function 
 
-
+// Easy has 30 squares, made of 15 pairs.    A,B,C from 0 to 9 
+// Medium has 60 squares, made of 30 pairs.  A,B,C,D,E,F from 0 to 9 
+// Hard has 80 squares made with 40 pairs.   A,B,C,D,E,F,G,H from 0 to 9. 
 
 
 function difficulty(level) {
-
 window.sessionStorage.setItem('level', level);
-
 
 if (level == 'easy') {
         document.getElementById('easy').style.display = 'block';
@@ -59,18 +60,12 @@ if (level == 'easy') {
         }
         winnersArray = [];
         setIcons(80,40);
-}
-
-
-        
-
-        
-      
-}
+} }
 
 
 
-
+// gridArray is an array of all the Ids from index.html
+// iconArray is an array for Font Awesome icon names.  
 
 const gridArray = [ 'A1','A2','A3','A4','A5','A6','A7','A8','A9','A0','B1','B2','B3','B4','B5','B6','B7','B8','B9','B0',
                     'C1','C2','C3','C4','C5','C6','C7','C8','C9','C0','D1','D2','D3','D4','D5','D6','D7','D8','D9','D0',
@@ -86,14 +81,19 @@ const iconsArray = [
                     'fa-wand-magic-sparkles','fa-heart','fa-rocket','fa-mug-hot','fa-pen','fa-plane','fa-truck-monster','fa-car']; 
 
 
-
+// seticons uses data from the difficult function above example (easy: 30 ids & 15 pairs )
+// The first for loop mixes up the gridArray order
+// This code was copied from StackOverflow
+// The second for loop, builds the HTML around the font awesome icon
+// This loop uses each icon twice for two random gridArray div ids
+// These correct pairs are placed together in an array and sent to session storage. 
 
 function setIcons(gridLength, iconLength) {
 
     let Id1 = 0
     let Id2 = 1;
     pairsArray = [];
-    
+
     for (let i = gridLength - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [gridArray[i], gridArray[j]] = [gridArray[j], gridArray[i]];
@@ -106,16 +106,18 @@ function setIcons(gridLength, iconLength) {
     Id1 = Id1 + 2;
     Id2 = Id2 + 2;
     }
-    }
+}
     
-// #2973e2; winner blue 
-// #bdd6ef  loser background 
+    // clicked() is an event listener function, from index.html 
+    // Captures the id's from the first, second, third and forth box clicked
+    // it sends the first and second clicked box ids to a function called checkPair() 
+    // the third box clicked replaces the 'first' variable, the old first value is stored as oldFirst 
+    // the forth box clicked replaces the 'second' variable, the old second value is srored as oldSecond
+    // oldFirst and oldSecond are checked against wiinnersArray, and their background colors are reset or set acordingly.
+    // winnersArray comes from the checkPair() function below
 
-    let clicks = 0;
-    let first, second;
-    let oldFirst, oldSecond;
-    let clickedPair1, clickedPair2;
-
+    let clicks = 0;     
+    let first, second, oldFirst, oldSecond, clickedPair1, clickedPair2;
 
     function clicked(square) {
     clicks++;
@@ -132,8 +134,6 @@ function setIcons(gridLength, iconLength) {
     oldSecond = second;
     first = square;
     
-    
-    
         if (winnersArray.includes(oldFirst) || winnersArray.includes(oldSecond) ) {
         document.getElementById(oldFirst).style.backgroundColor = "#2973e2";
         document.getElementById(oldSecond).style.backgroundColor = "#2973e2";
@@ -145,13 +145,15 @@ function setIcons(gridLength, iconLength) {
     clicks = 1;
     first = square;
     document.getElementById(first).style.backgroundColor = "orange";
-    
     }
-    
-    
-
 }
 
+    // checkPair() checks if two clicked ids match any pairs from the Array SetIcons() sent to seesionStoreage
+    // I joined the values of first and second and also a reversed joined combination 
+    // indexed values from my sessionStorgae array only returned one charactor at at time, not value pairs. 
+    // I used slice to slice value pairs from the array and checked them against the clickedPairs ids
+    // if a pair was found they would be stored in a array called winnersArray and their background color changed to darker blue. 
+    // The if statements at the bottom are used to start and stop the setInterval timer. 
 
     let score = 0;
     let winnersArray = [];
@@ -191,16 +193,13 @@ function setIcons(gridLength, iconLength) {
     if (winnersArray.length == 2) {
     setInterval(myTimer, 1000);
     }
-
-    
 }
 
+// myTimer() is a function to control the setInterval timer function. 
+// Then display the time in seconds and minuites. 
+// I used a trigger solution to clearInterval  
 
-
-let time = 0;
-let minutes = 0;
-let seconds = 0;
-let stopper = 0;
+let time = 0, minutes = 0, seconds = 0, stopper = 0;
 
 function myTimer(trigger, score) {
     time += 1;
@@ -224,90 +223,3 @@ function myTimer(trigger, score) {
     document.getElementById('timer').innerText = 'TIME: ' + minutes + ':' + seconds;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (level === 'easy' && winnersArray.length == 30) {
-        // myTimer('stop');
-        // winnersArray = [];
-        // }
-
-        // if (level === 'medium' && winnersArray.length == 60) {
-        // myTimer('stop');
-        // winnersArray = [];
-        // }
-    
-        // if (level === 'hard' && winnersArray.length == 80) {
-        // myTimer('stop');
-        // winnersArray = [];
-        // }
-
-
-
-
-
-
-
-
-
-        // for (let id of winnersArray) {
-        // document.getElementById(id).style.backgroundColor = '#2973e2';
-        // }
-        // let black = ['A1', 'A8', 'B3', 'B6','E3', 'E4', 'E5', 'E6', 'F1', 'F8']; 
-        // for (let id of black) {
-        // document.getElementById(id).style.backgroundColor = 'black';
-        // }
-        // let diagonal = ['A1', 'A8', 'D2', 'D7','E2','E7', 'F1', 'F8'];
-        // let degrees =  [135,225,45,315,225,135,45,315];
-        // for (let d = 0; d < diagonal.length; d++) {
-        // document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
-
-
-        // for (let id of winnersArray) {
-        // document.getElementById(id).style.backgroundColor = '#2973e2';
-        // }
-        // let black = ['A1','A8','C3','C6','G3','G4','G5','G6','H1','H8']; 
-        // for (let id of black) {
-        // document.getElementById(id).style.backgroundColor = 'black';
-        // }
-        // let diagonal = ['A1', 'A8','C2','C3','C6','C7','D2','D3','D6','D7', 'F2', 'F7', 'G2', 'G7', 'H1', 'H8'];
-        // let degrees =  [135,225,315,45,315,45,225,135,225,135,45,315,225,135,45,315];
-        // for (let d = 0; d < diagonal.length; d++) {
-        // document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
-
-        // for (let id of winnersArray) {
-        // document.getElementById(id).style.backgroundColor = '#2973e2';
-        // }
-        // let black = ['C1','C8','D1','D8','E1','E2','E7','E8','F1','F2','F3','F6','F7','F8','G1','G2','G3','G6','G7','G8','H1','H2','H3','H6','H7','H8','I1','I2','I7','I8']; 
-        // for (let id of black) {
-        // document.getElementById(id).style.backgroundColor = 'black';
-        // }
-        // let diagonal = ['C1', 'C8', 'E2', 'E7', 'H3', 'H6','I2','I7'];
-        // let degrees =  [45,315,45,315,135,225,135,225];
-        // for (let d = 0; d < diagonal.length; d++) {
-        // document.getElementById(diagonal[d]).style.background = `linear-gradient(${degrees[d]}deg, black 50%, #2973e2 50%)`;
